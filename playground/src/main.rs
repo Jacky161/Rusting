@@ -4,6 +4,7 @@ fn main() {
     //ch4();
     //ch5();
     //ch6();
+    ch7();
 }
 
 fn ch3() {
@@ -264,4 +265,55 @@ fn ch6() {
     if let Some(max) = config_max {
         println!("The maximum is configured to be {max}");
     }
+}
+
+// Common Collections
+fn ch7() {
+    // New empty vector, needs type annotation
+    let v: Vec<i32> = Vec::new();
+
+    // New vector using macro for initial values. Type inferred.
+    let v = vec![1, 2, 3];
+
+    // Needs to be mutable.
+    let mut v = Vec::new();
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+
+    // Iterating over it.
+    let mut v = vec![100, 32, 57];
+    for i in &mut v {
+        *i += 50;
+    }
+
+    // Storing multiple types in a vector.
+    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+
+    // Strings
+    let mut s1 = String::from("Hel");
+    s1.push_str("llo, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    // Does not take ownership
+    let s = format!("{s1}-{s2}-{s3}");
+
+    let hello = "Здравствуйте";
+    let s = &hello[0..4];  // Needs to be at character boundaries
 }
